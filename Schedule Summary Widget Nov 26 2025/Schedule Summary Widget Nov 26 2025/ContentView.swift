@@ -983,5 +983,7 @@ private extension Color {
 
 #Preview {
     ContentView()
+        .environmentObject(AppRouter())
+        .environmentObject(ScheduleViewModel())
 }
 

@@ -1237,39 +1237,41 @@ struct ExpandedDayRow: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            // Day header
-            HStack {
-                Text(isToday ? "TODAY" : dayLabel)
-                    .font(.custom("HelveticaNeue-Bold", size: 10))
-                    .foregroundColor(isToday ? .white : theme.primaryTextColor.color)
-                    .padding(.horizontal, isToday ? 6 : 0)
-                    .padding(.vertical, isToday ? 3 : 0)
-                    .background(isToday ? Color(hex: "007AFF") : Color.clear)
-                    .cornerRadius(4)
-                
-                Text(dateFormatted)
-                    .font(.custom("HelveticaNeue", size: 9))
-                    .foregroundColor(theme.secondaryTextColor.color)
-                
-                Spacer()
-                
-                // Weather
-                if let forecast = weather?.forecast(for: date) {
-                    HStack(spacing: 3) {
-                        Image(systemName: forecast.symbolName)
-                            .font(.system(size: 10))
-                        Text(forecast.highFormatted)
-                            .font(.custom("HelveticaNeue", size: 9))
+            // Day header - links to that day's view
+            Link(destination: DeepLinkRoute.todayURL(date: date)) {
+                HStack {
+                    Text(isToday ? "TODAY" : dayLabel)
+                        .font(.custom("HelveticaNeue-Bold", size: 10))
+                        .foregroundColor(isToday ? .white : theme.primaryTextColor.color)
+                        .padding(.horizontal, isToday ? 6 : 0)
+                        .padding(.vertical, isToday ? 3 : 0)
+                        .background(isToday ? Color(hex: "007AFF") : Color.clear)
+                        .cornerRadius(4)
+                    
+                    Text(dateFormatted)
+                        .font(.custom("HelveticaNeue", size: 9))
+                        .foregroundColor(theme.secondaryTextColor.color)
+                    
+                    Spacer()
+                    
+                    // Weather
+                    if let forecast = weather?.forecast(for: date) {
+                        HStack(spacing: 3) {
+                            Image(systemName: forecast.symbolName)
+                                .font(.system(size: 10))
+                            Text(forecast.highFormatted)
+                                .font(.custom("HelveticaNeue", size: 9))
+                        }
+                        .foregroundColor(theme.secondaryTextColor.color)
                     }
-                    .foregroundColor(theme.secondaryTextColor.color)
+                    
+                    Text("\(events.count)")
+                        .font(.custom("HelveticaNeue-Bold", size: 9))
+                        .foregroundColor(.white)
+                        .frame(width: 18, height: 18)
+                        .background(events.count > 0 ? Color(hex: "333333") : Color(hex: "CCCCCC"))
+                        .cornerRadius(4)
                 }
-                
-                Text("\(events.count)")
-                    .font(.custom("HelveticaNeue-Bold", size: 9))
-                    .foregroundColor(.white)
-                    .frame(width: 18, height: 18)
-                    .background(events.count > 0 ? Color(hex: "333333") : Color(hex: "CCCCCC"))
-                    .cornerRadius(4)
             }
             
             // Events
@@ -1282,7 +1284,9 @@ struct ExpandedDayRow: View {
             } else {
                 FlowLayout(spacing: 4) {
                     ForEach(events.prefix(8)) { event in
-                        CompactEventChip(event: event, theme: theme)
+                        Link(destination: DeepLinkRoute.eventURL(id: event.id, date: event.startDate)) {
+                            CompactEventChip(event: event, theme: theme)
+                        }
                     }
                     
                     if events.count > 8 {
@@ -1761,7 +1765,9 @@ struct DayEventBlock: View {
                 // Wrap events in a flexible layout
                 FlowLayout(spacing: 4) {
                     ForEach(events.prefix(6)) { event in
-                        CompactEventChip(event: event, theme: theme)
+                        Link(destination: DeepLinkRoute.eventURL(id: event.id, date: event.startDate)) {
+                            CompactEventChip(event: event, theme: theme)
+                        }
                     }
                     
                     if events.count > 6 {
@@ -2265,7 +2271,9 @@ struct NextWeekDayRow: View {
             } else {
                 FlowLayout(spacing: 3) {
                     ForEach(events.prefix(8)) { event in
-                        NoTimeEventChip(event: event, theme: theme)
+                        Link(destination: DeepLinkRoute.eventURL(id: event.id, date: event.startDate)) {
+                            NoTimeEventChip(event: event, theme: theme)
+                        }
                     }
                     
                     if events.count > 8 {
