@@ -24,7 +24,9 @@ struct TodayScreen: View {
     private var todayEvents: [ScheduleEvent] {
         let calendar = Calendar.current
         let targetDay = calendar.startOfDay(for: date)
-        let nextDay = calendar.date(byAdding: .day, value: 1, to: targetDay)!
+        guard let nextDay = calendar.date(byAdding: .day, value: 1, to: targetDay) else {
+            return []
+        }
         
         return (viewModel.events ?? [])
             .filter { $0.startDate >= targetDay && $0.startDate < nextDay }
@@ -266,7 +268,9 @@ struct FiveDayScreen: View {
     private func eventsForDay(_ date: Date) -> [ScheduleEvent] {
         let calendar = Calendar.current
         let dayStart = calendar.startOfDay(for: date)
-        let dayEnd = calendar.date(byAdding: .day, value: 1, to: dayStart)!
+        guard let dayEnd = calendar.date(byAdding: .day, value: 1, to: dayStart) else {
+            return []
+        }
         
         return (viewModel.events ?? [])
             .filter { $0.startDate >= dayStart && $0.startDate < dayEnd }
@@ -448,7 +452,9 @@ struct NextWeekScreen: View {
     private func eventsForDay(_ date: Date) -> [ScheduleEvent] {
         let calendar = Calendar.current
         let dayStart = calendar.startOfDay(for: date)
-        let dayEnd = calendar.date(byAdding: .day, value: 1, to: dayStart)!
+        guard let dayEnd = calendar.date(byAdding: .day, value: 1, to: dayStart) else {
+            return []
+        }
         
         return (viewModel.events ?? [])
             .filter { $0.startDate >= dayStart && $0.startDate < dayEnd }
@@ -463,15 +469,18 @@ struct NextWeekScreen: View {
         
         // Find the next Monday
         while calendar.component(.weekday, from: nextMonday) != 2 {
-            nextMonday = calendar.date(byAdding: .day, value: 1, to: nextMonday)!
+            guard let newDate = calendar.date(byAdding: .day, value: 1, to: nextMonday) else { break }
+            nextMonday = newDate
         }
         
         // If today IS Monday, go to next week's Monday
         if calendar.component(.weekday, from: Date()) == 2 && calendar.isDate(nextMonday, inSameDayAs: Date()) {
-            nextMonday = calendar.date(byAdding: .day, value: 7, to: nextMonday)!
+            if let newDate = calendar.date(byAdding: .day, value: 7, to: nextMonday) {
+                nextMonday = newDate
+            }
         }
         
-        let nextSunday = calendar.date(byAdding: .day, value: 6, to: nextMonday)!
+        let nextSunday = calendar.date(byAdding: .day, value: 6, to: nextMonday) ?? nextMonday
         return (nextMonday, nextSunday)
     }
 }

@@ -156,8 +156,14 @@ struct DeepLinkRoute {
         
         components.queryItems = queryItems.isEmpty ? nil : queryItems
         
-        // Force unwrap is safe here because we're constructing a valid URL
-        return components.url!
+        // URLComponents.url can return nil if the components are malformed
+        // In our case, we control the construction and know it's valid
+        // But to be safe, provide a fallback URL
+        guard let url = components.url else {
+            // Fallback to a simple scheme-only URL (should never happen)
+            return URL(string: "amfschedule://open")!
+        }
+        return url
     }
     
     // MARK: - Convenience URL Generators

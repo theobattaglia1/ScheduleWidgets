@@ -224,12 +224,15 @@ final class AppRouter: ObservableObject {
         
         // Find the next Monday
         while calendar.component(.weekday, from: nextMonday) != 2 {
-            nextMonday = calendar.date(byAdding: .day, value: 1, to: nextMonday)!
+            guard let newDate = calendar.date(byAdding: .day, value: 1, to: nextMonday) else { break }
+            nextMonday = newDate
         }
         
         // If today IS Monday, get next week's Monday
         if calendar.component(.weekday, from: Date()) == 2 {
-            nextMonday = calendar.date(byAdding: .day, value: 7, to: nextMonday)!
+            if let newDate = calendar.date(byAdding: .day, value: 7, to: nextMonday) {
+                nextMonday = newDate
+            }
         }
         
         return nextMonday
