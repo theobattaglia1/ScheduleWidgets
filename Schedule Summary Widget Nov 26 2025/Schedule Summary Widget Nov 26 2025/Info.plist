@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>Theo.Schedule-Summary-Widget-Nov-26-2025.refresh</string>
+	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>Google OAuth</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.874000025146-0guq8ghng3crr9tucb6105emaarc7uvr</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>AMF Schedule Deep Link</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>amfschedule</string>
+			</array>
+		</dict>
+	</array>
+	<key>NSCalendarsUsageDescription</key>
+	<string>AMF Schedule needs access to your calendars to display your schedule and generate AI summaries.</string>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>AMF Schedule needs full access to your calendars to display your schedule and generate AI summaries.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>AMF Schedule uses your location to show accurate weather information in your schedule widget.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>processing</string>
+	</array>
+</dict>
+</plist>
+

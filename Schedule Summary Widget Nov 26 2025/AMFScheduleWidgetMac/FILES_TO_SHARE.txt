@@ -1,0 +1,57 @@
+FILES TO ADD TO BOTH iOS AND macOS WIDGET TARGETS
+==================================================
+
+After creating the macOS widget target, add these files to BOTH targets:
+
+CORE WIDGET FILES:
+------------------
+AMFScheduleWidget/Widgets/ScheduleWidgetProvider.swift
+AMFScheduleWidget/Widgets/ScheduleWidgetIntent.swift
+AMFScheduleWidget/Widgets/WeatherClusterView.swift
+
+MAC WIDGET VIEWS:
+------------------
+AMFScheduleWidget/Widgets/Mac/MacAmbientAgendaWidget.swift
+AMFScheduleWidget/Widgets/Mac/MacNotificationCenterWidget.swift
+
+INTERACTIVE FEATURES:
+---------------------
+AMFScheduleWidget/Widgets/Intents/WidgetInteractionIntents.swift
+
+SUPPORTING VIEWS (for Interactive widget):
+------------------------------------------
+AMFScheduleWidget/Widgets/iPad/SwimlanesView.swift
+AMFScheduleWidget/Widgets/iPad/TimelineView.swift
+AMFScheduleWidget/Widgets/AMFScheduleWidget.swift (for MarkdownText, CompactEventRow, etc.)
+
+SHARED MODELS:
+--------------
+Schedule Summary Widget Nov 26 2025/Shared/Models/ClientCalendar.swift
+Schedule Summary Widget Nov 26 2025/Shared/Models/ScheduleEvent.swift
+Schedule Summary Widget Nov 26 2025/Shared/Models/Summaries.swift
+Schedule Summary Widget Nov 26 2025/Shared/Models/WeatherModel.swift
+Schedule Summary Widget Nov 26 2025/Shared/Models/WidgetTheme.swift
+
+SHARED SERVICES:
+----------------
+Schedule Summary Widget Nov 26 2025/Shared/Services/AppGroupStore.swift
+Schedule Summary Widget Nov 26 2025/Shared/Services/CalendarService.swift
+Schedule Summary Widget Nov 26 2025/Shared/Services/GeminiSummarizer.swift
+Schedule Summary Widget Nov 26 2025/Shared/Services/GoogleCalendarAPI.swift
+Schedule Summary Widget Nov 26 2025/Shared/Services/WeatherService.swift
+Schedule Summary Widget Nov 26 2025/Shared/Services/WidgetThemeStore.swift
+
+SHARED RESOURCES:
+-----------------
+Schedule Summary Widget Nov 26 2025/Shared/Resources/today_prompt.txt
+Schedule Summary Widget Nov 26 2025/Shared/Resources/week_prompt.txt
+
+HOW TO ADD:
+-----------
+1. Select file in Project Navigator
+2. Open File Inspector (⌥⌘1)
+3. Under "Target Membership", check:
+   ☑️ AMFScheduleWidgetExtension (iOS)
+   ☑️ AMFScheduleWidgetMac (macOS)
+
+

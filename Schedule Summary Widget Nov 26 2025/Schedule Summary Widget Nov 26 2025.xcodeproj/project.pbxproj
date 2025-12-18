@@ -1,0 +1,814 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		402C633D2ED82ED4002613AA /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 402C633C2ED82ED4002613AA /* WidgetKit.framework */; };
+		402C633F2ED82ED4002613AA /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 402C633E2ED82ED4002613AA /* SwiftUI.framework */; };
+		40F818562EF0D485004620C8 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 402C633C2ED82ED4002613AA /* WidgetKit.framework */; };
+		40F818572EF0D485004620C8 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 402C633E2ED82ED4002613AA /* SwiftUI.framework */; };
+		40F818662EF0D486004620C8 /* AMFScheduleWidgetMACExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 40F818552EF0D485004620C8 /* AMFScheduleWidgetMACExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		40F818642EF0D486004620C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 402C631A2ED82E03002613AA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 402C63392ED82ED4002613AA;
+			remoteInfo = AMFScheduleWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		402C63512ED82ED5002613AA /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				40F818662EF0D486004620C8 /* AMFScheduleWidgetMACExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		402C63222ED82E03002613AA /* Schedule Summary Widget Nov 26 2025.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Schedule Summary Widget Nov 26 2025.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		402C633A2ED82ED4002613AA /* AMFScheduleWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AMFScheduleWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		402C633C2ED82ED4002613AA /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		402C633E2ED82ED4002613AA /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		402C63CE2ED84759002613AA /* AMFScheduleWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AMFScheduleWidgetExtension.entitlements; sourceTree = "<group>"; };
+		40F818552EF0D485004620C8 /* AMFScheduleWidgetMACExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AMFScheduleWidgetMACExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		40FBF78F2EF3A774005A203D /* AMFScheduleWidgetMACExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AMFScheduleWidgetMACExtension.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		402C63542ED82ED5002613AA /* Exceptions for "AMFScheduleWidget" folder in "AMFScheduleWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 402C63392ED82ED4002613AA /* AMFScheduleWidgetExtension */;
+		};
+		402C63CB2ED84476002613AA /* Exceptions for "Schedule Summary Widget Nov 26 2025" folder in "AMFScheduleWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Shared/Configuration.swift,
+				Shared/Models/ClientCalendar.swift,
+				Shared/Models/ScheduleEvent.swift,
+				Shared/Models/Summaries.swift,
+				Shared/Models/WeatherModel.swift,
+				Shared/Models/WidgetTheme.swift,
+				Shared/Resources/today_prompt.txt,
+				Shared/Resources/week_prompt.txt,
+				Shared/Services/AppGroupStore.swift,
+				Shared/Services/CalendarService.swift,
+				Shared/Services/GeminiSummarizer.swift,
+				Shared/Services/GoogleCalendarAPI.swift,
+				Shared/Services/WeatherService.swift,
+				Shared/Services/WidgetThemeStore.swift,
+			);
+			target = 402C63392ED82ED4002613AA /* AMFScheduleWidgetExtension */;
+		};
+		402C63CD2ED8472B002613AA /* Exceptions for "Schedule Summary Widget Nov 26 2025" folder in "Schedule Summary Widget Nov 26 2025" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 402C63212ED82E03002613AA /* Schedule Summary Widget Nov 26 2025 */;
+		};
+		40F8186A2EF0D486004620C8 /* Exceptions for "AMFScheduleWidgetMAC" folder in "AMFScheduleWidgetMACExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AMFScheduleWidgetMACControl.swift,
+				AppIntent.swift,
+				Info.plist,
+			);
+			target = 40F818542EF0D485004620C8 /* AMFScheduleWidgetMACExtension */;
+		};
+		40F818A32EF1125A004620C8 /* Exceptions for "Schedule Summary Widget Nov 26 2025" folder in "AMFScheduleWidgetMACExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Shared/Configuration.swift,
+				Shared/Models/ClientCalendar.swift,
+				Shared/Models/ScheduleEvent.swift,
+				Shared/Models/Summaries.swift,
+				Shared/Models/WeatherModel.swift,
+				Shared/Models/WidgetTheme.swift,
+				Shared/Services/AppGroupStore.swift,
+				Shared/Services/CalendarService.swift,
+				Shared/Services/GeminiSummarizer.swift,
+				Shared/Services/GoogleCalendarAPI.swift,
+				Shared/Services/WeatherService.swift,
+				Shared/Services/WidgetThemeStore.swift,
+			);
+			target = 40F818542EF0D485004620C8 /* AMFScheduleWidgetMACExtension */;
+		};
+		40F819EF2EF147E8004620C8 /* Exceptions for "AMFScheduleWidget" folder in "AMFScheduleWidgetMACExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AMFScheduleWidgetBundle.swift,
+				Widgets/iPad/iPadDayboardWidget.swift,
+				Widgets/iPad/LockScreenWidgets.swift,
+				Widgets/WidgetDefinitions.swift,
+			);
+			target = 40F818542EF0D485004620C8 /* AMFScheduleWidgetMACExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		402C63242ED82E03002613AA /* Schedule Summary Widget Nov 26 2025 */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				402C63CD2ED8472B002613AA /* Exceptions for "Schedule Summary Widget Nov 26 2025" folder in "Schedule Summary Widget Nov 26 2025" target */,
+				402C63CB2ED84476002613AA /* Exceptions for "Schedule Summary Widget Nov 26 2025" folder in "AMFScheduleWidgetExtension" target */,
+				40F818A32EF1125A004620C8 /* Exceptions for "Schedule Summary Widget Nov 26 2025" folder in "AMFScheduleWidgetMACExtension" target */,
+			);
+			path = "Schedule Summary Widget Nov 26 2025";
+			sourceTree = "<group>";
+		};
+		402C63402ED82ED4002613AA /* AMFScheduleWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				402C63542ED82ED5002613AA /* Exceptions for "AMFScheduleWidget" folder in "AMFScheduleWidgetExtension" target */,
+				40F819EF2EF147E8004620C8 /* Exceptions for "AMFScheduleWidget" folder in "AMFScheduleWidgetMACExtension" target */,
+			);
+			path = AMFScheduleWidget;
+			sourceTree = "<group>";
+		};
+		40F818582EF0D485004620C8 /* AMFScheduleWidgetMAC */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				40F8186A2EF0D486004620C8 /* Exceptions for "AMFScheduleWidgetMAC" folder in "AMFScheduleWidgetMACExtension" target */,
+			);
+			path = AMFScheduleWidgetMAC;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		402C631F2ED82E03002613AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		402C63372ED82ED4002613AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				402C633F2ED82ED4002613AA /* SwiftUI.framework in Frameworks */,
+				402C633D2ED82ED4002613AA /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40F818522EF0D485004620C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40F818572EF0D485004620C8 /* SwiftUI.framework in Frameworks */,
+				40F818562EF0D485004620C8 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		402C63192ED82E03002613AA = {
+			isa = PBXGroup;
+			children = (
+				40FBF78F2EF3A774005A203D /* AMFScheduleWidgetMACExtension.entitlements */,
+				402C63CE2ED84759002613AA /* AMFScheduleWidgetExtension.entitlements */,
+				402C63242ED82E03002613AA /* Schedule Summary Widget Nov 26 2025 */,
+				402C63402ED82ED4002613AA /* AMFScheduleWidget */,
+				40F818582EF0D485004620C8 /* AMFScheduleWidgetMAC */,
+				402C633B2ED82ED4002613AA /* Frameworks */,
+				402C63232ED82E03002613AA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		402C63232ED82E03002613AA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				402C63222ED82E03002613AA /* Schedule Summary Widget Nov 26 2025.app */,
+				402C633A2ED82ED4002613AA /* AMFScheduleWidgetExtension.appex */,
+				40F818552EF0D485004620C8 /* AMFScheduleWidgetMACExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		402C633B2ED82ED4002613AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				402C633C2ED82ED4002613AA /* WidgetKit.framework */,
+				402C633E2ED82ED4002613AA /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		402C63212ED82E03002613AA /* Schedule Summary Widget Nov 26 2025 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 402C632D2ED82E04002613AA /* Build configuration list for PBXNativeTarget "Schedule Summary Widget Nov 26 2025" */;
+			buildPhases = (
+				402C631E2ED82E03002613AA /* Sources */,
+				402C631F2ED82E03002613AA /* Frameworks */,
+				402C63202ED82E03002613AA /* Resources */,
+				402C63512ED82ED5002613AA /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				40F818652EF0D486004620C8 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				402C63242ED82E03002613AA /* Schedule Summary Widget Nov 26 2025 */,
+			);
+			name = "Schedule Summary Widget Nov 26 2025";
+			packageProductDependencies = (
+			);
+			productName = "Schedule Summary Widget Nov 26 2025";
+			productReference = 402C63222ED82E03002613AA /* Schedule Summary Widget Nov 26 2025.app */;
+			productType = "com.apple.product-type.application";
+		};
+		402C63392ED82ED4002613AA /* AMFScheduleWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 402C63552ED82ED5002613AA /* Build configuration list for PBXNativeTarget "AMFScheduleWidgetExtension" */;
+			buildPhases = (
+				402C63362ED82ED4002613AA /* Sources */,
+				402C63372ED82ED4002613AA /* Frameworks */,
+				402C63382ED82ED4002613AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				402C63402ED82ED4002613AA /* AMFScheduleWidget */,
+			);
+			name = AMFScheduleWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = AMFScheduleWidgetExtension;
+			productReference = 402C633A2ED82ED4002613AA /* AMFScheduleWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		40F818542EF0D485004620C8 /* AMFScheduleWidgetMACExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40F818692EF0D486004620C8 /* Build configuration list for PBXNativeTarget "AMFScheduleWidgetMACExtension" */;
+			buildPhases = (
+				40F818512EF0D485004620C8 /* Sources */,
+				40F818522EF0D485004620C8 /* Frameworks */,
+				40F818532EF0D485004620C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				402C63402ED82ED4002613AA /* AMFScheduleWidget */,
+				40F818582EF0D485004620C8 /* AMFScheduleWidgetMAC */,
+			);
+			name = AMFScheduleWidgetMACExtension;
+			packageProductDependencies = (
+			);
+			productName = AMFScheduleWidgetMACExtension;
+			productReference = 40F818552EF0D485004620C8 /* AMFScheduleWidgetMACExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		402C631A2ED82E03002613AA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2620;
+				LastUpgradeCheck = 2620;
+				TargetAttributes = {
+					402C63212ED82E03002613AA = {
+						CreatedOnToolsVersion = 26.1.1;
+					};
+					402C63392ED82ED4002613AA = {
+						CreatedOnToolsVersion = 26.1.1;
+					};
+					40F818542EF0D485004620C8 = {
+						CreatedOnToolsVersion = 26.2;
+					};
+				};
+			};
+			buildConfigurationList = 402C631D2ED82E03002613AA /* Build configuration list for PBXProject "Schedule Summary Widget Nov 26 2025" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 402C63192ED82E03002613AA;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 402C63232ED82E03002613AA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				402C63212ED82E03002613AA /* Schedule Summary Widget Nov 26 2025 */,
+				402C63392ED82ED4002613AA /* AMFScheduleWidgetExtension */,
+				40F818542EF0D485004620C8 /* AMFScheduleWidgetMACExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		402C63202ED82E03002613AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		402C63382ED82ED4002613AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40F818532EF0D485004620C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		402C631E2ED82E03002613AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		402C63362ED82ED4002613AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40F818512EF0D485004620C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		40F818652EF0D486004620C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 402C63392ED82ED4002613AA /* AMFScheduleWidgetExtension */;
+			targetProxy = 40F818642EF0D486004620C8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		402C632B2ED82E04002613AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = VR6F23HLU3;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		402C632C2ED82E04002613AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = VR6F23HLU3;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		402C632E2ED82E04002613AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Schedule Summary Widget Nov 26 2025/Schedule Summary Widget Nov 26 2025.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = VR6F23HLU3;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Schedule-Summary-Widget-Nov-26-2025-Info.plist";
+				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "AMF Schedule needs full access to your calendars to display your schedule and generate AI summaries.";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "AMF Schedule needs access to your calendars to display your schedule and generate AI summaries.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "AMF Schedule uses your location to show accurate weather information in your schedule widget.";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Theo.Schedule-Summary-Widget-Nov-26-2025";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
+				XROS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Debug;
+		};
+		402C632F2ED82E04002613AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Schedule Summary Widget Nov 26 2025/Schedule Summary Widget Nov 26 2025.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = VR6F23HLU3;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Schedule-Summary-Widget-Nov-26-2025-Info.plist";
+				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "AMF Schedule needs full access to your calendars to display your schedule and generate AI summaries.";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "AMF Schedule needs access to your calendars to display your schedule and generate AI summaries.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "AMF Schedule uses your location to show accurate weather information in your schedule widget.";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Theo.Schedule-Summary-Widget-Nov-26-2025";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
+				XROS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Release;
+		};
+		402C63522ED82ED5002613AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = AMFScheduleWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = VR6F23HLU3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AMFScheduleWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AMFScheduleWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Theo.Schedule-Summary-Widget-Nov-26-2025.AMFScheduleWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
+			};
+			name = Debug;
+		};
+		402C63532ED82ED5002613AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = AMFScheduleWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = VR6F23HLU3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AMFScheduleWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AMFScheduleWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Theo.Schedule-Summary-Widget-Nov-26-2025.AMFScheduleWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		40F818672EF0D486004620C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = AMFScheduleWidgetMACExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VR6F23HLU3;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AMFScheduleWidgetMAC/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AMFScheduleWidgetMAC;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Theo.Schedule-Summary-Widget-Nov-26-2025.AMFScheduleWidgetMAC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		40F818682EF0D486004620C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = AMFScheduleWidgetMACExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VR6F23HLU3;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AMFScheduleWidgetMAC/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AMFScheduleWidgetMAC;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Theo.Schedule-Summary-Widget-Nov-26-2025.AMFScheduleWidgetMAC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		402C631D2ED82E03002613AA /* Build configuration list for PBXProject "Schedule Summary Widget Nov 26 2025" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				402C632B2ED82E04002613AA /* Debug */,
+				402C632C2ED82E04002613AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		402C632D2ED82E04002613AA /* Build configuration list for PBXNativeTarget "Schedule Summary Widget Nov 26 2025" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				402C632E2ED82E04002613AA /* Debug */,
+				402C632F2ED82E04002613AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		402C63552ED82ED5002613AA /* Build configuration list for PBXNativeTarget "AMFScheduleWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				402C63522ED82ED5002613AA /* Debug */,
+				402C63532ED82ED5002613AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		40F818692EF0D486004620C8 /* Build configuration list for PBXNativeTarget "AMFScheduleWidgetMACExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40F818672EF0D486004620C8 /* Debug */,
+				40F818682EF0D486004620C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 402C631A2ED82E03002613AA /* Project object */;
+}
