@@ -111,7 +111,11 @@ struct AMFScheduleWidget: Widget {
         }
         .configurationDisplayName("AMF Schedule")
         .description("View your schedule in different formats")
+        #if os(iOS)
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge])
+        #else
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+        #endif
     }
 }
 
@@ -329,7 +333,7 @@ struct TodayExtraLargeView: View {
             rightColumn
                 .frame(width: 280)
         }
-        .widgetURL(URL(string: "amfschedule://today"))
+        .widgetURL(DeepLinkRoute.todayURL(date: entry.date))
     }
     
     private var leftColumn: some View {
@@ -370,10 +374,12 @@ struct TodayExtraLargeView: View {
                     .lineLimit(3)
                     .padding(.top, 12)
                 
-                // Events list
+                // Events list - each event is a deep link
                 VStack(alignment: .leading, spacing: 4) {
                     ForEach(events) { event in
-                        DetailedEventRow(event: event, theme: theme)
+                        Link(destination: DeepLinkRoute.eventURL(id: event.id, date: event.startDate)) {
+                            DetailedEventRow(event: event, theme: theme)
+                        }
                     }
                 }
             }
@@ -695,7 +701,7 @@ struct TodaySmallView: View {
             }
         }
         .padding(12)
-        .widgetURL(URL(string: "amfschedule://today"))
+        .widgetURL(DeepLinkRoute.todayURL(date: entry.date))
     }
     
     private var formattedDate: String {
@@ -744,18 +750,20 @@ struct TodayMediumView: View {
                 
                 VStack(alignment: .trailing, spacing: 4) {
                     ForEach(upcomingEvents.prefix(4)) { event in
-                        HStack(spacing: 5) {
-                            Circle()
-                                .fill(calendarColor(for: event.clientName))
-                                .frame(width: 5, height: 5)
-                            
-                            Text(event.formattedTime)
-                                .font(.custom("HelveticaNeue", size: 9))
-                                .foregroundColor(Color(hex: "666666"))
-                            
-                            Text(event.clientName)
-                                .font(.custom("HelveticaNeue-Medium", size: 9))
-                                .foregroundColor(calendarColor(for: event.clientName))
+                        Link(destination: DeepLinkRoute.eventURL(id: event.id, date: event.startDate)) {
+                            HStack(spacing: 5) {
+                                Circle()
+                                    .fill(calendarColor(for: event.clientName))
+                                    .frame(width: 5, height: 5)
+                                
+                                Text(event.formattedTime)
+                                    .font(.custom("HelveticaNeue", size: 9))
+                                    .foregroundColor(Color(hex: "666666"))
+                                
+                                Text(event.clientName)
+                                    .font(.custom("HelveticaNeue-Medium", size: 9))
+                                    .foregroundColor(calendarColor(for: event.clientName))
+                            }
                         }
                     }
                 }
@@ -769,7 +777,7 @@ struct TodayMediumView: View {
             .frame(width: 95)
         }
         .padding(12)
-        .widgetURL(URL(string: "amfschedule://today"))
+        .widgetURL(DeepLinkRoute.todayURL(date: entry.date))
     }
     
     private var formattedDate: String {
@@ -909,7 +917,7 @@ struct TodayLargeView: View {
             .padding(.horizontal, 12)
             .padding(.bottom, 12)
         }
-        .widgetURL(URL(string: "amfschedule://today"))
+        .widgetURL(DeepLinkRoute.todayURL(date: entry.date))
     }
     
     private var formattedDate: String {
@@ -1179,7 +1187,7 @@ struct SevenDayExtraLargeView: View {
             .padding(16)
             .frame(maxWidth: .infinity)
         }
-        .widgetURL(URL(string: "amfschedule://sevenday"))
+        .widgetURL(DeepLinkRoute.fiveDayURL())
     }
     
     private var dateRange: String {
@@ -1408,7 +1416,7 @@ struct NextWeekExtraLargeView: View {
             .padding(16)
             .frame(maxWidth: .infinity)
         }
-        .widgetURL(URL(string: "amfschedule://nextweek"))
+        .widgetURL(DeepLinkRoute.nextWeekURL())
     }
     
     private var nextWeekRange: String {
@@ -1520,7 +1528,7 @@ struct SevenDaySmallView: View {
                 .foregroundColor(Color(hex: "666666"))
         }
         .padding(12)
-        .widgetURL(URL(string: "amfschedule://sevenday"))
+        .widgetURL(DeepLinkRoute.fiveDayURL())
     }
     
     private var dateRange: String {
@@ -1585,7 +1593,7 @@ struct SevenDayMediumView: View {
             .frame(width: 80)
         }
         .padding(12)
-        .widgetURL(URL(string: "amfschedule://sevenday"))
+        .widgetURL(DeepLinkRoute.fiveDayURL())
     }
     
     private var dateRange: String {
@@ -1669,7 +1677,7 @@ struct SevenDayLargeView: View {
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .top)
         }
         .clipped()
-        .widgetURL(URL(string: "amfschedule://sevenday"))
+        .widgetURL(DeepLinkRoute.fiveDayURL())
     }
     
     private var dateRange: String {
@@ -2010,7 +2018,7 @@ struct NextWeekSmallView: View {
                 .foregroundColor(Color(hex: "666666"))
         }
         .padding(12)
-        .widgetURL(URL(string: "amfschedule://nextweek"))
+        .widgetURL(DeepLinkRoute.nextWeekURL())
     }
     
     private var nextWeekRange: String {
@@ -2076,7 +2084,7 @@ struct NextWeekMediumView: View {
             .frame(width: 80)
         }
         .padding(14)
-        .widgetURL(URL(string: "amfschedule://nextweek"))
+        .widgetURL(DeepLinkRoute.nextWeekURL())
     }
     
     private var nextWeekRange: String {
@@ -2167,7 +2175,7 @@ struct NextWeekLargeView: View {
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .top)
         }
         .clipped()
-        .widgetURL(URL(string: "amfschedule://nextweek"))
+        .widgetURL(DeepLinkRoute.nextWeekURL())
     }
     
     private var nextWeekRange: String {

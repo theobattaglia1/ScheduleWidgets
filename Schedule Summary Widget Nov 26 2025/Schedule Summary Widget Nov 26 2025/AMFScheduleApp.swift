@@ -2,7 +2,7 @@
 //  AMFScheduleApp.swift
 //  AMF Schedule
 //
-//  Main app entry point with background task registration
+//  Main app entry point with background task registration and deep link handling
 //
 
 #if os(iOS)
@@ -15,10 +15,17 @@ import UIKit
 struct AMFScheduleApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @Environment(\.scenePhase) private var scenePhase
+    @StateObject private var router = AppRouter()
+    @StateObject private var viewModel = ScheduleViewModel()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(router)
+                .environmentObject(viewModel)
+                .onOpenURL { url in
+                    handleDeepLink(url)
+                }
         }
         .onChange(of: scenePhase) { oldPhase, newPhase in
             switch newPhase {
@@ -36,6 +43,12 @@ struct AMFScheduleApp: App {
                 break
             }
         }
+    }
+    
+    /// Handle incoming deep link URLs
+    private func handleDeepLink(_ url: URL) {
+        print("🔗 [App] Received deep link: \(url)")
+        router.handleDeepLink(url)
     }
     
     /// Always refresh when app opens (most reliable approach)
@@ -56,6 +69,10 @@ struct AMFScheduleApp: App {
         do {
             try await BackgroundScheduler.shared.performFullRefresh()
             print("📱 ✅ Auto-refresh completed")
+            // Reload cached data in view model
+            await MainActor.run {
+                viewModel.loadCachedData()
+            }
         } catch {
             print("📱 ⚠️ Auto-refresh failed: \(error)")
         }
@@ -127,10 +144,17 @@ import EventKit
 @main
 struct AMFScheduleApp: App {
     @Environment(\.scenePhase) private var scenePhase
+    @StateObject private var router = AppRouter()
+    @StateObject private var viewModel = ScheduleViewModel()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(router)
+                .environmentObject(viewModel)
+                .onOpenURL { url in
+                    handleDeepLink(url)
+                }
                 .onAppear {
                     // Refresh data when app opens
                     Task {
@@ -156,6 +180,12 @@ struct AMFScheduleApp: App {
         }
     }
     
+    /// Handle incoming deep link URLs
+    private func handleDeepLink(_ url: URL) {
+        print("🔗 [App] Received deep link: \(url)")
+        router.handleDeepLink(url)
+    }
+    
     /// Refresh data when app opens or becomes active
     private func refreshIfStale() async {
         let store = AppGroupStore.shared
@@ -174,6 +204,10 @@ struct AMFScheduleApp: App {
         do {
             try await BackgroundScheduler.shared.performFullRefresh()
             print("🖥️ ✅ Auto-refresh completed")
+            // Reload cached data in view model
+            await MainActor.run {
+                viewModel.loadCachedData()
+            }
         } catch {
             print("🖥️ ⚠️ Auto-refresh failed: \(error)")
         }
