@@ -93,9 +93,42 @@ enum AppConfiguration {
     
     enum DeepLinks {
         static let scheme = "amfschedule"
-        static let today = "amfschedule://today"
-        static let week = "amfschedule://week"
-        static let settings = "amfschedule://settings"
+        
+        // Canonical deep link URLs using DeepLinkRoute
+        // These replace the old hardcoded URLs for consistency
+        
+        /// URL to open Today view
+        static var today: URL { DeepLinkRoute.todayURL() }
+        
+        /// URL to open 5-Day Outlook view
+        static var fiveDay: URL { DeepLinkRoute.fiveDayURL() }
+        
+        /// URL to open Next Week view
+        static var nextWeek: URL { DeepLinkRoute.nextWeekURL() }
+        
+        /// URL to open Today view for a specific date
+        static func today(date: Date) -> URL {
+            DeepLinkRoute.todayURL(date: date)
+        }
+        
+        /// URL to open 5-Day Outlook anchored at a specific date
+        static func fiveDay(date: Date) -> URL {
+            DeepLinkRoute.fiveDayURL(date: date)
+        }
+        
+        /// URL to open Next Week anchored at a specific date
+        static func nextWeek(date: Date) -> URL {
+            DeepLinkRoute.nextWeekURL(date: date)
+        }
+        
+        /// URL to open a specific event
+        static func event(id: String, date: Date? = nil) -> URL {
+            DeepLinkRoute.eventURL(id: id, date: date)
+        }
+        
+        // Legacy URL strings for backwards compatibility
+        static let todayLegacy = "amfschedule://today"
+        static let weekLegacy = "amfschedule://week"
     }
     
     // MARK: - Date Formatting

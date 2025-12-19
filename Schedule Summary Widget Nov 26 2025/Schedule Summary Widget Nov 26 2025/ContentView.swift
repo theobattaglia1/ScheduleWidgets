@@ -8,7 +8,7 @@ import AppKit
 //  ContentView.swift
 //  AMF Schedule
 //
-//  Main app view with manual refresh and Google Calendar authentication
+//  Main app view with manual refresh, Google Calendar authentication, and deep link routing
 //
 
 import SwiftUI
@@ -17,49 +17,29 @@ import AuthenticationServices
 import EventKit
 
 struct ContentView: View {
-    @StateObject private var viewModel = ScheduleViewModel()
+    @EnvironmentObject var viewModel: ScheduleViewModel
+    @EnvironmentObject var router: AppRouter
     @State private var showingCalendarSettings = false
     @State private var showingWidgetStudio = false
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $router.navigationPath) {
             ZStack {
                 // Liquid Glass Background - subtle gradient
                 liquidGlassBackground
                 
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 20) {
-                        // Header
-                        headerView
-                        
-                        // Authentication Status
-                        authenticationSection
-                        
-                        // Error message
-                        if let errorMessage = viewModel.errorMessage {
-                            errorMessageView(errorMessage)
-                        }
-                        
-                        // Today Summary
-                        if viewModel.isAuthenticated {
-                            todaySummarySection
-                            
-                            // Week Summary
-                            weekSummarySection
-                            
-                            // Widget Studio
-                            widgetStudioSection
-                            
-                            // Calendar Status
-                            calendarStatusSection
-                            
-                            // Weather Status
-                            weatherStatusSection
-                        }
-                        
-                        Spacer(minLength: 40)
+                // Main content based on selected view
+                mainContentView
+                
+                // Toast overlay
+                if let toast = router.toastMessage {
+                    VStack {
+                        Spacer()
+                        ToastView(message: toast)
+                            .padding(.bottom, 80)
+                            .transition(.move(edge: .bottom).combined(with: .opacity))
                     }
-                    .padding(20)
+                    .animation(.spring(), value: router.toastMessage)
                 }
                 
                 // Loading overlay
@@ -67,9 +47,9 @@ struct ContentView: View {
                     loadingOverlay
                 }
             }
-#if os(iOS)
-            .navigationBarHidden(true)
-#endif
+            #if os(iOS)
+            .navigationBarHidden(router.selectedView == .today && router.navigationPath.isEmpty)
+            #endif
             .onAppear {
                 viewModel.loadCachedData()
             }
@@ -82,12 +62,119 @@ struct ContentView: View {
                         }
                     }
             }
-#if os(iOS)
+            #if os(iOS)
             .sheet(isPresented: $showingWidgetStudio) {
                 WidgetStudioView()
             }
-#endif
+            #endif
+            .navigationDestination(for: NavigationDestination.self) { destination in
+                switch destination {
+                case .eventDetail(let eventId, let date):
+                    EventDetailScreen(eventId: eventId, date: date)
+                        .environmentObject(viewModel)
+                        .environmentObject(router)
+                }
+            }
         }
+    }
+    
+    // MARK: - Main Content View
+    
+    @ViewBuilder
+    private var mainContentView: some View {
+        switch router.selectedView {
+        case .today:
+            homeView
+        case .fiveDay:
+            FiveDayScreen(anchor: router.selectedDate)
+                .environmentObject(viewModel)
+                .environmentObject(router)
+        case .nextWeek:
+            NextWeekScreen(anchor: router.selectedDate)
+                .environmentObject(viewModel)
+                .environmentObject(router)
+        }
+    }
+    
+    // MARK: - Home View (Original ContentView content)
+    
+    private var homeView: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                // Header
+                headerView
+                
+                // View type picker (for navigation)
+                viewTypePicker
+                
+                // Authentication Status
+                authenticationSection
+                
+                // Error message
+                if let errorMessage = viewModel.errorMessage {
+                    errorMessageView(errorMessage)
+                }
+                
+                // Today Summary
+                if viewModel.isAuthenticated {
+                    todaySummarySection
+                    
+                    // Week Summary
+                    weekSummarySection
+                    
+                    // Widget Studio
+                    widgetStudioSection
+                    
+                    // Calendar Status
+                    calendarStatusSection
+                    
+                    // Weather Status
+                    weatherStatusSection
+                }
+                
+                Spacer(minLength: 40)
+            }
+            .padding(20)
+        }
+    }
+    
+    // MARK: - View Type Picker
+    
+    private var viewTypePicker: some View {
+        HStack(spacing: 8) {
+            ForEach(AppScheduleViewType.allCases) { viewType in
+                Button {
+                    withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                        router.selectedView = viewType
+                        if viewType == .nextWeek {
+                            router.goToNextWeek()
+                        } else if viewType == .fiveDay {
+                            router.goToFiveDay()
+                        }
+                    }
+                } label: {
+                    HStack(spacing: 6) {
+                        Image(systemName: viewType.iconName)
+                            .font(.system(size: 12))
+                        Text(viewType.displayName)
+                            .font(.system(size: 13, weight: .medium))
+                    }
+                    .foregroundStyle(router.selectedView == viewType ? .white : .primary)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10, style: .continuous)
+                            .fill(router.selectedView == viewType ? Color.blue : Color.clear)
+                    )
+                    .background(
+                        RoundedRectangle(cornerRadius: 10, style: .continuous)
+                            .fill(.ultraThinMaterial)
+                    )
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .padding(.vertical, 4)
     }
     
     // MARK: - Liquid Glass Background
@@ -673,6 +760,7 @@ class ScheduleViewModel: ObservableObject {
     @Published var todaySummary: TodaySummary?
     @Published var weekSummary: WeekSummary?
     @Published var weather: WeatherData?
+    @Published var events: [ScheduleEvent]?
     @Published var weatherStatus: String = "Not fetched"
     @Published var lastRefresh: Date?
     @Published var isLoading = false
@@ -709,6 +797,7 @@ class ScheduleViewModel: ObservableObject {
         todaySummary = store.loadTodaySummary()
         weekSummary = store.loadWeekSummary()
         weather = store.loadWeather()
+        events = store.loadEvents()
         lastRefresh = store.loadLastRefreshTime()
         updateAuthStatus()
     }
@@ -894,5 +983,7 @@ private extension Color {
 
 #Preview {
     ContentView()
+        .environmentObject(AppRouter())
+        .environmentObject(ScheduleViewModel())
 }
 

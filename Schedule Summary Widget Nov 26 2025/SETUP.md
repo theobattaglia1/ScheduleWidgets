@@ -5,8 +5,11 @@
 ```
 Schedule Summary Widget Nov 26 2025/
 ├── Schedule Summary Widget Nov 26 2025/     # Main App Target
-│   ├── AMFScheduleApp.swift                 # App entry point
-│   ├── ContentView.swift                    # Main app UI
+│   ├── AMFScheduleApp.swift                 # App entry point with deep link handling
+│   ├── ContentView.swift                    # Main app UI with navigation
+│   ├── AppRouter.swift                      # Navigation router for deep links
+│   ├── Screens/
+│   │   └── ScheduleScreens.swift            # Screen views (Today, FiveDay, NextWeek, EventDetail)
 │   ├── Info.plist                           # App configuration
 │   └── Schedule_Summary_Widget.entitlements # App entitlements
 │
@@ -15,18 +18,21 @@ Schedule Summary Widget Nov 26 2025/
 │   ├── Info.plist                           # Widget configuration
 │   ├── AMFScheduleWidget.entitlements       # Widget entitlements
 │   └── Widgets/
-│       ├── TodayScheduleWidget.swift        # Today widget
-│       ├── WeekAheadWidget.swift            # Week ahead widget
+│       ├── AMFScheduleWidget.swift          # Main configurable widget with all view types
 │       ├── ScheduleWidgetProvider.swift     # Timeline provider
 │       ├── ScheduleWidgetIntent.swift       # Widget intent
+│       ├── WidgetDefinitions.swift          # Additional widget definitions
 │       └── WeatherClusterView.swift         # Weather component
 │
 └── Shared/                                  # Shared Code (add to both targets)
     ├── Configuration.swift                  # All credentials & settings
+    ├── DeepLinks/
+    │   └── DeepLinkRoute.swift              # Canonical deep link URL handling
     ├── Models/
     │   ├── ScheduleEvent.swift
     │   ├── ClientCalendar.swift
     │   ├── WeatherModel.swift
+    │   ├── WidgetTheme.swift
     │   └── Summaries.swift
     ├── Services/
     │   ├── AppGroupStore.swift
@@ -34,6 +40,7 @@ Schedule Summary Widget Nov 26 2025/
     │   ├── CalendarService.swift
     │   ├── WeatherService.swift
     │   ├── GeminiSummarizer.swift
+    │   ├── WidgetThemeStore.swift
     │   └── BackgroundScheduler.swift
     └── Resources/
         ├── today_prompt.txt
@@ -44,9 +51,14 @@ Schedule Summary Widget Nov 26 2025/
 
 ### 1. Add Shared Files to Both Targets
 
-In Xcode, select all files in the `Shared/` folder and in the File Inspector (right panel), check both targets:
+In Xcode, select all files in the `Shared/` folder (including the new `DeepLinks/` subfolder) and in the File Inspector (right panel), check both targets:
 - ☑️ Schedule Summary Widget Nov 26 2025 (main app)
 - ☑️ AMFScheduleWidgetExtension (widget)
+
+**New files to add:**
+- `Shared/DeepLinks/DeepLinkRoute.swift` - Add to BOTH targets
+- `Schedule Summary Widget Nov 26 2025/AppRouter.swift` - Add to main app target only
+- `Schedule Summary Widget Nov 26 2025/Screens/ScheduleScreens.swift` - Add to main app target only
 
 ### 2. Configure App Groups
 
@@ -79,6 +91,30 @@ The URL schemes are already in `Info.plist`, but verify in Xcode:
 4. Verify these schemes exist:
    - `com.googleusercontent.apps.874000025146-0gug8ghng3crr9tucb6105emaarc7uvr` (Google OAuth)
    - `amfschedule` (Deep links)
+
+## Deep Link URL Format
+
+The app supports canonical deep links for widget-to-app navigation:
+
+### Canonical Format
+```
+amfschedule://open?view=<viewType>&date=<YYYY-MM-DD>&id=<eventId>
+```
+
+### Supported URLs
+| Destination | URL |
+|-------------|-----|
+| Today view | `amfschedule://open?view=today` |
+| Today view (specific date) | `amfschedule://open?view=today&date=2025-01-15` |
+| 5-Day outlook | `amfschedule://open?view=fiveDay` |
+| Next week | `amfschedule://open?view=nextWeek` |
+| Event detail | `amfschedule://open?view=event&id=EVENT_ID&date=2025-01-15` |
+
+### Legacy URL Support (Backwards Compatible)
+The app also accepts legacy URLs:
+- `amfschedule://today`
+- `amfschedule://week` / `amfschedule://sevenday`
+- `amfschedule://nextweek`
 
 ### 5. Configure Background Modes
 
